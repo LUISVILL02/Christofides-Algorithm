@@ -1,8 +1,7 @@
-import itertools
 from collections import namedtuple
 import networkx as nx
 import math
-import os
+import time
 
 Point = namedtuple("Point", ['x', 'y'])
 
@@ -22,6 +21,7 @@ def complete_graph(points):
 
 def solve_Christofides(points):
     #--------------------------------------------------------/
+    start_time = time.time()
     G = complete_graph(points)
     min = nx.minimum_spanning_tree(G) # árbol de expansión mínimo
     Odd_min = []
@@ -50,4 +50,8 @@ def solve_Christofides(points):
         if i[0] not in MinCost:
             MinCost.append(i[0])
     #--------------------------------------------------------/
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Tiempo de ejecución: {elapsed_time:.4f} segundos")
     return MinCost
