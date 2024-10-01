@@ -10,10 +10,10 @@ import csv
 def main():
     name = input("Nombre del archivo: ")
     points = []
-    with open('../'+name, 'r') as file:
+    with open(name, 'r') as file:
         coordenadas = csv.reader(file, delimiter=' ')
         for coordenada in coordenadas:
-            cor = coordenada#[-2:]
+            cor = coordenada[-2:]
             points.append(Point(float(cor[0]), float(cor[1])))
     solution = solve_Christofides(points)
     print(solution)
