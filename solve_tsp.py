@@ -1,4 +1,5 @@
 from collections import namedtuple
+
 import networkx as nx
 import math
 import time
@@ -53,5 +54,4 @@ def solve_Christofides(points):
 
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print(f"Tiempo de ejecución: {elapsed_time:.4f} segundos")
-    return MinCost
+    return MinCost, elapsed_time

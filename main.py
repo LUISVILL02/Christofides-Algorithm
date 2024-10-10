@@ -1,5 +1,6 @@
 from solve_tsp import *
 from path_visualize import grafica
+
 import csv
 
 #item_count = int(input())
@@ -11,13 +12,15 @@ def main():
     name = input("Nombre del archivo: ")
     points = []
     with open(name, 'r') as file:
-        coordenadas = csv.reader(file, delimiter=' ')
+        coordenadas = csv.reader(file, delimiter=' ') # or delimiter=',' for csv file
         for coordenada in coordenadas:
-            cor = coordenada[-2:]
+            cor = coordenada[-2:] # or coordenada for 2 columns
             points.append(Point(float(cor[0]), float(cor[1])))
-    solution = solve_Christofides(points)
-    print(solution)
-    print(calcular_costo(solution, points))
+
+    solution, time = solve_Christofides(points)
+    print("solucion: ", solution)
+    print(f"Tiempo de ejecución: {time:.4f} segundos")
+    print("Costo total: ", calcular_costo(solution, points))
     grafica(points, solution)
 
 def calcular_costo(ruta, puntos):

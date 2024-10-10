@@ -19,7 +19,7 @@ def grafica(points, path: list):
         plt.arrow(x[i], y[i], x[j] - x[i], y[j] - y[i], color='r', length_includes_head=True)
 
     # noinspection PyTypeChecker
-    plt.xlim(0, max(x) * 1.1)
+    plt.xlim(min(x) * 1.1, max(x) * 1.1)
     # noinspection PyTypeChecker
-    plt.ylim(0, max(y) * 1.1)
+    plt.ylim(min(y) * 1.1, max(y) * 1.1)
     plt.show()
